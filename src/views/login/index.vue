@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="login-container">
     <el-form ref="formRef" :model="form" class="login-form" :rules="rules">
@@ -10,7 +11,11 @@
       </el-form-item>
       <el-form-item prop="password">
         <el-icon :size="20" class="svg-container"><lock /></el-icon>
-        <el-input v-model="form.password"></el-input>
+        <el-input
+          v-model="form.password"
+          type="password"
+          show-password
+        ></el-input>
       </el-form-item>
       <el-button type="primary" class="login-button" @click="handleLogin"
         >登录</el-button
@@ -22,7 +27,8 @@
 <script setup>
 import { ref } from 'vue'
 import { User, Lock } from '@element-plus/icons-vue'
-import { login } from '@/api/login'
+import { useStore } from 'vuex'
+const store = useStore()
 const form = ref({
   username: '',
   password: ''
@@ -49,7 +55,7 @@ const handleLogin = () => {
   formRef.value.validate(async (valid) => {
     if (valid) {
       alert('submit')
-      await login(form.value)
+      store.dispatch('app/login', form.value)
     } else {
       console.log('error submit!!')
       return false
@@ -74,7 +80,7 @@ $cursor: #fff;
     position: relative;
     width: 520px;
     max-width: 100%;
-    padding: 160px 35px 0;
+    padding: 160px 20px 0;
     margin: 0 auto;
     overflow: hidden;
 
