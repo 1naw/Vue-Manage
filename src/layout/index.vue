@@ -1,10 +1,15 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <el-container class="app-wrapper">
-    <el-aside width="200px" class="sidebar-container"><Menu /></el-aside>
+    <el-aside width="200px" class="sidebar-container">
+      <Menu ></Menu>
+    </el-aside>
     <el-container class="container">
       <el-header>Header</el-header>
-      <el-main>Main</el-main>
+      <el-main>
+        Main
+        <router-view />
+      </el-main>
     </el-container>
   </el-container>
 </template>
