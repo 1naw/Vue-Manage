@@ -31,5 +31,15 @@ module.exports = {
         }
       }
     }
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        additionalData: `
+          @import "/src/assets/styles/variables.scss";  // scss文件地址
+          @import "/src/assets/styles/mixin.scss";     // scss文件地址
+        `
+      }
+    }
   }
 }
